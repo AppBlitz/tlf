@@ -1,5 +1,4 @@
-import { Token } from "./token.mjs"
-
+import { Token } from "./Token.mjs"
 /**
  * Verifica si una expresión es igual a un carácter específico.
  * 
@@ -66,6 +65,24 @@ function verificationA(datas, index) {
 
     aux += 1;
   }
+  return null;
+}
+function verificationC(array) {
+  let arreglo = [];
+  for (let i = 0; i < array.length; i += 1) {
+    if (isAritemticoOrDecrement(array[i], i) != null) {
+      arreglo.push(isAritemticoOrDecrement(array[i], i));
+
+    }
+    else if (verificationA(array[i], i) != null) {
+      arreglo.push(verificationA(array[i], i));
+
+    }
+  }
+
+  return arreglo;
+
 }
 
-export { verificationCaracter, isAritemticoOrDecrement, verificationA }
+export { verificationCaracter, isAritemticoOrDecrement, verificationA, verificationC }
+

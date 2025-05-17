@@ -13,15 +13,32 @@ import { Token } from "./Token.mjs";
 
 // Punto 15 
 function isComentario(expresion, index) {
+  const mensaggeError ="error";
   const cadena = expresion.trim();
-
-  if (cadena.startsWith("//") || cadena.includes("//")) {
-    return new Token(expresion, "Comentario en línea", index);
+  let auxiliar = "";
+  if (cadena[0] === "/" && cadena[1] === "*") {
+    
+    for (let i = 2; i < cadena.length; i++) {
+        
+        if(cadena[i] === "*" && cadena[i+1] === "/"){
+          if(i+1== cadena.length-1){
+            return new Token(auxiliar, "Comentario en bloque", index);
+          }else{
+            return new Token(mensaggeError, "No puede haver mas caracteres despues del */", index);
+          }
+        }
+        auxiliar+=cadena[i];
+    }
+    return new Token(mensaggeError, "Debe terminar en */", index);
+  } else {
+    if(cadena[0] === "/" && cadena[1] === "/"){
+      for (let i = 2; i < cadena.length; i++) {
+        auxiliar+=cadena[i];
+      }
+      return new Token(auxiliar, "Comentario en linea", index);  
+    }
   }
-  if(cadena.startsWith("/*") && cadena.endsWith("*/")){
-    return new Token(expresion, "Comentario en Bloque", index);
-  }
-  return null;
+  return new Token(mensaggeError, "Debe comenzar en  */", index);
 }
 
 //Punto 14
@@ -134,6 +151,6 @@ function isLlave(expresion, index) {
 function main() {
 
 
-  }
+}
   
   main();

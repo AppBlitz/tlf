@@ -105,51 +105,20 @@ function isCadenaCaracteres(expresion, index) {
 
 //Punto 13
 function isSeparadorComa(expresion, index) {
-    // Si el texto está vacío, retornamos false
-    if (!expresion || expresion.trim() === '') {
-      return null;
-    }
-    // Validamos que el string no empiece ni termine con coma
-    if (expresion.trim().startsWith(',') || expresion.trim().endsWith(',')) {
-      return null;
-    }
-    // Dividimos por comas para verificar cada elemento
-    const elementos = expresion.split(',');
-    
-    // Verificamos cada elemento
-    for (let elemento of elementos) {
-      const elementoTrimmed = elemento.trim();
-    // Si el elemento está vacío (comas consecutivas)
-      if (elementoTrimmed === '') {
-        return null;
+  const cadena = expresion.trim();
+  for (let i = 0; i < cadena.length; i++) {
+    if(cadena[i]==","){
+      if(i++ == cadena.length){
+        return new Token(cadena, "Separador", index);
+      }else{
+        return new Token(Error, "No es un separador valido", index);
       }
-     // Verificamos si hay espacios dentro del elemento (no solo al inicio o final)
-      // Si tiene espacios internos, el formato es incorrecto
-      if (elementoTrimmed.includes(' ')) {
-        return null;
-      }
-    // Si al quitar espacios iniciales y finales, aún quedan espacios
-      if (elemento !== elementoTrimmed && elementoTrimmed.length > 0) {
-        const soloEspaciosExtremos =
-          (elemento.startsWith(' ') && elemento.trimStart() === elementoTrimmed) ||
-          (elemento.endsWith(' ') && elemento.trimEnd() === elementoTrimmed) ||
-          (elemento.startsWith(' ') && elemento.endsWith(' ') &&
-            elemento.trim() === elementoTrimmed);
-         // Si hay espacios que no están en los extremos, es formato incorrecto
-        if (!soloEspaciosExtremos) {
-          return null;
-        }
-      }
+      
+    }else{
+      return new Token(Error, "No es un separador valido", index);
     }
-    // Si hay un espacio que no esté alrededor de una coma, es formato incorrecto
-    // Esto detectaría "palabra palabra" o "palabra    palabra"
-    const sinComas = expresion.replace(/\s*,\s*/g, ',');
-    if (sinComas.includes(' ')) {
-      return null;
-    }
-  
-    return new Token(expresion, "Separador por coma válido", index);
   }
+}
 
 //Punto 12
 function isTerminal(expresion, index) {
@@ -180,7 +149,7 @@ function isLlave(expresion, index) {
 //Main que hace como test
 function main() {
 
-  console.log(isCadenaCaracteres('"Hola \\ mundo"',0));
+  console.log(isSeparadorComa("",0));
 }
   
   main();

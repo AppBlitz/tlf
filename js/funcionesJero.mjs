@@ -43,35 +43,65 @@ function isComentario(expresion, index) {
 
 //Punto 14
 function isCadenaCaracteres(expresion, index) {
-    if (expresion.length < 2) {
-      return null;
-    }
+ 
+  const cadena = expresion.trim();
+  let auxiliar ="";
   
-    const primerCaracter = expresion[0];
-    const ultimoCaracter = expresion[expresion.length - 1];
-  
-    if (primerCaracter === '"' && ultimoCaracter === '"') {
-      for (let i = 1; i < expresion.length - 1; i++) {
-        if (expresion[i] === '\\') {
-          if (i === expresion.length - 2) {
-            console.log("Error: El carácter de escape \\ no puede estar al final.");
-            return new Token(expresion, "Error 1", index);
-          }
-  
-          const siguienteCaracter = expresion[i + 1];
-          const caracteresValidos = ['n', 't', '\\', '"', '0'];
-          if (!caracteresValidos.includes(siguienteCaracter)) {
-            console.log(`Error: Secuencia de escape inválida \\${siguienteCaracter} en la posición ${i}`);
-            return new Token(expresion, "Error2", index);
-          }
-          i++; // saltar el carácter escapado
+  if(cadena[0] === '"'){
+    
+    for (let i = 1; i < cadena.length; i++) {
+      
+      auxiliar+=expresion[i];
+      
+      if(cadena[i]==='"'){
+        
+        if(i+1 == cadena.length ){
+          
+          return new Token(auxiliar.slice(0, -1), "Es una cadena", index);
+        
+        }else{
+          
+          return new Token("Error", "No debes haver caracteres despues de la ultima comilla", index);  
         }
       }
-      return new Token(expresion, "Cadena de caracteres", index);
+      if (cadena[i] === '\\') {
+        const siguiente = cadena[i + 1];
+        auxiliar = auxiliar.slice(0, -1);
+        switch (siguiente) {
+          case '"':
+            auxiliar += "(comilla doble)";
+              
+              i++;
+              break;
+          case '\\':
+            auxiliar += "(barra invertida)";
+              
+              i++;
+              break;
+          case 'n':
+            auxiliar += "(Salto de linea)";
+              
+              i++;
+              break;
+          case 't':
+            auxiliar += "(tabulación)";
+              
+              i++;
+              break;
+          case '0':
+            auxiliar +=  "(carácter nulo)";            
+              i++;
+              break;
+          default:                            
+      } 
     }
-  
-    return new Token(expresion, "Error 3", index);
+    
+  } 
+  } else{
+    return new Token(Error, "debe comenzar con comillas", index);
   }
+  return new Token(Error, "cadena debe termina en comillas", index); 
+}
 
 //Punto 13
 function isSeparadorComa(expresion, index) {
@@ -150,7 +180,7 @@ function isLlave(expresion, index) {
 //Main que hace como test
 function main() {
 
-
+  console.log(isCadenaCaracteres('"Hola \\ mundo"',0));
 }
   
   main();

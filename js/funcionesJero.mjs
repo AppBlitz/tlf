@@ -122,15 +122,21 @@ function isSeparadorComa(expresion, index) {
 
 //Punto 12
 function isTerminal(expresion, index) {
-    // Quitamos espacios en blanco al final de la expresión
-    expresion = expresion.trimEnd();
-  
-    // Verificamos si el último carácter es ";"
-    if (expresion.endsWith(";")) {
-      return new Token(expresion, "Terminal", index);
-    } else {
-      return false;
+  const cadena = expresion.trim();
+  for (let i = 0; i < cadena.length; i++) {
+    if(cadena[i]==";"){
+      console.log(i++);
+        console.log(cadena.length);
+      if(i++ == cadena.length){
+        return new Token(cadena, "Es un Terminal", index);
+      }else{
+        return new Token("Error 1", "No es un terminal valido", index);
+      }
+      
+    }else{
+      return new Token("Error 2", "No es un terminal valido", index);
     }
+  }
 }
 //Punto 11
 function isLlave(expresion, index) {
@@ -149,7 +155,7 @@ function isLlave(expresion, index) {
 //Main que hace como test
 function main() {
 
-  console.log(isSeparadorComa("",0));
+  console.log(isTerminal("hola;",0));
 }
   
   main();

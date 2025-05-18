@@ -140,22 +140,35 @@ function isTerminal(expresion, index) {
 }
 //Punto 11
 function isLlave(expresion, index) {
-    // Eliminamos espacios al principio y al final
-    expresion = expresion.trim();
-  
-    // Verificamos si la expresión es exactamente "{" o "}"
-    if (expresion === "{" ) {
-        return new Token(expresion, "Es llave de apertura", index);
-    } 
-    if( expresion === "}"){
-        return new Token(expresion, "Es llave de cierre ", index);
+  const cadena = expresion.trim();
+  for (let i = 0; i < cadena.length; i++) {
+    if(cadena[i]=="{"){
+      console.log(i++);
+        console.log(cadena.length);
+      if(i++ == cadena.length){
+        return new Token(cadena, "Es Llave apertura", index);
+      }else{
+        return new Token("Error", "LLave arpetura invalido", index);
+      }
+      
+    }else{
+      if(cadena[i]=="}"){
+        console.log(i++);
+          console.log(cadena.length);
+        if(i++ == cadena.length){
+          return new Token(cadena, "Es Llave cierre", index);
+        }else{
+          return new Token("Error", "LLave cierre invalido", index);
+        }
+        
+      }
     }
-    return null;  
+  } 
 }
 //Main que hace como test
 function main() {
 
-  console.log(isTerminal("hola;",0));
+ 
 }
   
   main();

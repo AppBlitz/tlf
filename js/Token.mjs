@@ -24,7 +24,7 @@ class Token {
    * @returns {string} La representación en cadena del token, combinando la expresión, categoría, índice y la palabra "finalizado".
    */
   get token() {
-    return this.expresion + "" + this.category + "" + this.index + "finalizado";
+    return `${this.expresion} (${this.category}) at index ${this.index}`;
   }
 
 }

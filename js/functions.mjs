@@ -1,4 +1,7 @@
 import { Token } from "./Token.mjs"
+import { isSeparadorComma } from "./comma.mjs"
+import { terminalInvalid } from "./dictionary.mjs";
+import { isKey } from "./keys.mjs"
 /**
  * Verifica si una expresión es igual a un carácter específico.
  * 
@@ -72,11 +75,18 @@ function verificationC(array) {
   for (let i = 0; i < array.length; i += 1) {
     if (isAritemticoOrDecrement(array[i], i) != null) {
       arreglo.push(isAritemticoOrDecrement(array[i], i));
-
     }
     else if (verificationA(array[i], i) != null) {
       arreglo.push(verificationA(array[i], i));
-
+    }
+    else if (isTerminal(array[i], i) != null) {
+      arreglo.push(isTerminal(array[i], i));
+    }
+    else if (isSeparadorComma(array[i], i) != null) {
+      arreglo.push(isSeparadorComma(array[i], i));
+    }
+    else if (isKey(array[i], i) != null) {
+      arreglo.push(isKey(array[i], i));
     }
   }
 
@@ -84,5 +94,7 @@ function verificationC(array) {
 
 }
 
-export { verificationCaracter, isAritemticoOrDecrement, verificationA, verificationC }
+
+
+export { verificationCaracter, isAritemticoOrDecrement, verificationA, verificationC, isTerminal }
 

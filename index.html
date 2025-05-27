@@ -1,21 +1,35 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Configuración de codificación de caracteres -->
     <meta charset="UTF-8" />
+    <!-- Configuración para que la página sea responsiva en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Formulario de Datos</title>
+    <!-- Vinculación al archivo CSS externo para estilos -->
     <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
+    <!-- Contenedor principal que centra y organiza el contenido -->
     <div class="container">
+      <!-- Contenedor para el área de entrada de texto -->
       <div class="input-container">
+        <!-- Área de texto donde el usuario ingresa la expresión -->
         <textarea id="inputField" placeholder="Ingrese la expresión"></textarea>
       </div>
+
+      <!-- Contenedor para mostrar el resultado o salida -->
       <div class="output-container">
+        <!-- Etiqueta donde se mostrará el resultado procesado -->
         <label id="outputLabel">Aquí se mostrará el resultado</label>
       </div>
+
+      <!-- Botón que al hacer clic procesa la entrada -->
       <button id="submitButton">Procesar</button>
     </div>
+
+    <!-- Script que importa el módulo JavaScript encargado de la lógica -->
     <script type="module" src="js/index.mjs"></script>
   </body>
 </html>

@@ -1,10 +1,15 @@
 
 import { Token } from "./Token.mjs"
 
+/*
+ * Método para saber si dos expresiones son iguales*/
 function verificationCaracter(expression, character) {
   return (expression === character);
 }
 
+/*
+ *Método para saber si es un operador de c++
+ * */
 function isAritemticoOrDecrement(datas, index) {
   if (verificationCaracter(datas, "++")) {
     return new Token(datas, "Operador aumento", index);

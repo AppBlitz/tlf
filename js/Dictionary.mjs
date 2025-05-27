@@ -1,3 +1,8 @@
+/*
+ * Se busca que esta objeto tenga ciertos objetos que permiten la identificación de simbolos más adelante, lo cual permite mcuho mejor el trabajo cuando se desea llamar 
+ * Como tiene un token asociado a un valor booleano o una descripción textual de lo que se refiere el simbolo
+ * Permite mucho mejor el llamado cuando se encesita
+ * */
 const terminalInvalid = {
   ":": false,
   ",": "separador de coma",
@@ -21,6 +26,9 @@ const terminalInvalid = {
   "!=": "Operador de comparación diferente a ",
 }
 
+/*
+ * Con esto objeto se busca guardar todas las palabras reservadas que deberian de ser reconocidas por analizador léxico, también en mucho más fácil su manejo debido a que se le pueden agregar más palabras reservadas y el metodo de todas maneras lo va a pdoer reconocer
+ * */
 const keywords = {
   "if": "Palabra reservada",
   "int": "Palabra reservada",
@@ -39,6 +47,9 @@ const keywords = {
   "bool": "Palabra reservada",
   "const": "Palabra reservada"
 }
+/*
+ * Con este objeto se desea agregar los diferentes caracteres como lo son letras de la a A la z y poder servirse como referencia para un futuro utilizarse para la busqueda de palabras reservadas o nombre de variables
+ * */
 const word = {
   "a": "a",
   "b": "b",
@@ -68,6 +79,10 @@ const word = {
   "z": "z"
 };
 
+/*
+ * Se creo un diccionario de simbolos donde se pueda identificar estos de una manera más clara y fácil, esto ayuda a que a la hora de buscar que simbolos permite el lenguaje estos se puedan utilizar
+ * */
+
 const simbols = {
   "=": "=",
   "+": "+",
@@ -81,6 +96,9 @@ const simbols = {
 }
 
 
+/*
+ * Se creo este diccionario donde se identifica todos los operadores de asignación que tiene c++, cuando se desea verificar si un operador de asignación permite c++ se recurre a este objeto
+ * */
 const operatorAssignation = {
   "=": "Operador de asignación simple",
   "+=": "Operador de suma y asignación",

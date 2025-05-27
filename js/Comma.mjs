@@ -1,12 +1,13 @@
 import { Token } from "./Token.mjs"
 import { terminalInvalid } from "./Dictionary.mjs";
 
+
 /**
- * Checks if a given expression is a comma separator (",").
+ * Verifica si una expresión dada es un separador de coma (",").
  *
- * @param {string} expresion - The expression to evaluate.
- * @param {number} index - The index of the expression in the source.
- * @returns {Token|null} A Token object if the expression is a comma separator, otherwise null.
+ * @param {string} expresion - La expresión a evaluar.
+ * @param {number} index - El índice de la expresión en la fuente.
+ * @returns {Token|null} Un objeto Token si la expresión es un separador de coma, de lo contrario null.
  */
 function isSeparadorComma(expresion, index) {
   expresion.trim();
@@ -20,4 +21,3 @@ function isSeparadorComma(expresion, index) {
 }
 
 export { isSeparadorComma }
-

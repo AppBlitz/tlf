@@ -12,8 +12,12 @@ import { verificationA } from "./Verification.mjs"
 import { isAritemticoOrDecrement } from "./Increase.mjs"
 import { isComentario } from "./Comment.mjs"
 import { isCadenaCaracteres } from "./Stringcharacter.mjs"
+import { isIdentificador } from "./Identificator.mjs"
 
 
+/*
+ * Se guardan todas las fucniones para después poder ir recorriendolas y pdoerlas utilizar de una  mejor forma
+ * */
 const verifiers = [
   isComentario,
   isCadenaCaracteres,
@@ -25,6 +29,7 @@ const verifiers = [
   isKey,
   isAssignmentOperators,
   isOPeratorPurchasing,
+  isIdentificador,
   isNumber,
   isNumeroReal,
 ]
@@ -50,10 +55,11 @@ function verificationC(array) {
       }
     }
 
+    //Identificar si alguna de las funciones devolvio un token valido o devolvio un token este se encarga de agregarlo al array
     if (tokenReconocido) {
       resultado.push(tokenReconocido)
     } else {
-      resultado.push(new Token(array[i], "Símbolo no identificado", i))
+      resultado.push(new Token(array[i], "Símbolo no identificado", i))//En caso de que sea un toquen invalido este dice que es un toquen invalido
     }
   }
 

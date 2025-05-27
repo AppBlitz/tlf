@@ -18,7 +18,7 @@ function isCadenaCaracteres(expresion, index) {
 
         } else {
 
-          return new Token("Error", "No debes haver caracteres despues de la ultima comilla", index);
+          return null;
         }
       }
       if (cadena[i] === '\\') {
@@ -55,8 +55,8 @@ function isCadenaCaracteres(expresion, index) {
 
     }
   } else {
-    return new Token(Error, "debe comenzar con comillas", index);
+    return null;
   }
-  return new Token(Error, "cadena debe termina en comillas", index);
+  return null;
 }
 export { isCadenaCaracteres }

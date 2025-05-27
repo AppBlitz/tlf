@@ -1,6 +1,14 @@
 import { Token } from "./Token.mjs"
 import { simbols, operatorAssignation } from "./Dictionary.mjs";
 
+/**
+ * Función para la verificación de los operadores de asignación
+ *
+ * @param {string} expresion - La expresión a evaluar.
+ * @param {number} index - El índice de la expresión en la fuente.
+ * @returns {Token|null} Un objeto Token si la expresión es un operador de expresion
+ */
+
 function isAssignmentOperators(expresion, index) {
   expresion.trim();
   let auxiliary = "";

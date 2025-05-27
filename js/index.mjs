@@ -1,5 +1,5 @@
 
-import { verificationC } from "./functions.mjs";
+import { verificationC } from "./Functions.mjs";
 
 const inputField = document.getElementById('inputField');
 const outputLabel = document.getElementById('outputLabel');
@@ -20,9 +20,8 @@ submitButton.addEventListener('click', () => {
 
   let formattedText = "";
   for (let i = 0; i < arreglo.length; i += 1) {
-    formattedText += `${arreglo[i].expresion} -->${arreglo[i].category} index ${arreglo[i].index}<br>`;
+    formattedText += `${arreglo[i]?.expresion} -->${arreglo[i]?.category} index ${arreglo[i]?.index}<br>`;
   }
 
-  // Mostrar el texto formateado en el label usando innerHTML
   outputLabel.innerHTML = formattedText;
 });

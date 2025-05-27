@@ -1,5 +1,5 @@
 import { Token } from "./Token.mjs"
-import { terminalInvalid } from "./dictionary.mjs";
+import { terminalInvalid } from "./Dictionary.mjs";
 
 /**
  * Checks if a given expression is a comma separator (",").
